@@ -1,5 +1,5 @@
 # engine/game_engine.py
-# Role 1 - Student A
+# Role 1 - Dagmawi Debasu
 # Responsibility: Menu display and safe input handling.
 # This module is used by main.py and by every scene in story.py.
 # It is the ONLY place in the project where player input is read,
