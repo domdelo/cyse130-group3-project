@@ -1,6 +1,6 @@
 # security/security.py
 # CyberScape: The Cursed Campground
-# Cyber Role: Dom DeLeat
+# Cyber Role: Dom Deloatch
 # This file handles two things:
 #   1. Audit logging  - writing important game events to a text file
 #   2. Input validation - making sure the player types valid input
