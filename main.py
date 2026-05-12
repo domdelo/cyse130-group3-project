@@ -1,5 +1,5 @@
 # main.py
-# Role 1 - Student A
+# Role 1 - Dagmawi Debasu
 # Responsibility: Title screen, main game loop, and scene routing.
 # This file starts the game and connects all modules together.
 
