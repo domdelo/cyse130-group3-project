@@ -1,6 +1,6 @@
 # security/save_load.py
 # CyberScape: The Cursed Campground
-# Cyber Role: Dom DeLeat
+# Cyber Role: Dom Deloatch
 # This file handles saving and loading the game.
 # It also checks if someone cheated by editing the save file manually.
 # How the tamper check works:
