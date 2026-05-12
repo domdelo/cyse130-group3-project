@@ -4,6 +4,7 @@
 # GAME STATE (FLAGS)
 # -------------------------
 game_state = {
+    "inventory": []
     "visited_cabin": False,
     "met_ranger": False,
     "helped_kid": False,
