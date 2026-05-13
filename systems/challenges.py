@@ -1,6 +1,6 @@
 # systems/challenges.py
 # CyberScape: The Cursed Campground
-# Cyber Role: Dom DeLeat
+# Cyber Role: Dom Deloatch
 # This file has the two required challenges:
 #   Challenge 1 - The Ranger's Cipher (a decoding puzzle)
 #   Challenge 2 - The Shadow Encounter (a combat encounter)
