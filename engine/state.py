@@ -43,10 +43,34 @@ def new_state():
         "npc_met":   set(),
         "path":      "",
         "ending":    None,
+
+        # Challenge keys - used by systems/challenges.py
+        "challenge_cipher_result": "",   # "" / "success" / "fail"
+        "challenge_shadow_result": "",   # "" / "success" / "fail" / "fled"
+        "alarm_triggered":         False,
+        "has_cipher_clue":         False,
+
+        # Player health - used by shadow encounter combat
+        "player_health": 5,
+
+        # Ending flags - used by game_is_over() below
+        "curse_broken": False,
+        "escaped":      False,
+        "cursed":       False,
     }
+
+
+# Aliases so main.py imports work
 create_new_state = new_state
-game_is_over = lambda state: state.get("curse_broken") or state.get("escaped") or state.get("cursed") or state.get("player_health", 5) <= 0
+game_is_over = lambda state: (
+    state.get("curse_broken") or
+    state.get("escaped")      or
+    state.get("cursed")       or
+    state.get("player_health", 5) <= 0
+)
 print_state_summary = lambda state: print(state)
+
+
 # =====================
 # FLAG HELPERS
 # =====================
