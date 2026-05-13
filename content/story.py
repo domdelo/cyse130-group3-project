@@ -1,6 +1,6 @@
 # content/story.py
 # CyberScape: The Cursed Campground
-# Student: Story scenes and branching logic
+# Riya: Story scenes and branching logic
 
 from security.security import log_event
 
