@@ -1,19 +1,8 @@
-# Student A: Story scenes and branching logic
+# content/story.py
+# CyberScape: The Cursed Campground
+# Student: Story scenes and branching logic
 
-# -------------------------
-# GAME STATE (FLAGS)
-# -------------------------
-game_state = {
-    "inventory": [],
-    "visited_cabin": False,
-    "met_ranger": False,
-    "helped_kid": False,
-    "saw_ghost": False,
-    "has_journal": False,
-    "curse_broken": False,
-    "escaped": False,
-    "cursed": False
-}
+from security.security import log_event
 
 # -------------------------
 # SCENES (STRUCTURED)
@@ -42,7 +31,7 @@ scenes = {
 
     "ranger_scene": {
         "text": "The ranger warns you: 'The curse feeds on fear. Find the journal.'",
-        "effect": lambda state: state.update({"met_ranger": True}),
+        "effect": lambda state: state["flags"].update({"met_ranger": True}),
         "choices": [
             {"desc": "Search for the journal", "next": "journal_scene"}
         ]
@@ -50,7 +39,7 @@ scenes = {
 
     "cabin_scene": {
         "text": "Inside the cabin, you hear whispers. Something watches you.",
-        "effect": lambda state: state.update({"visited_cabin": True}),
+        "effect": lambda state: state["flags"].update({"visited_cabin": True}),
         "choices": [
             {"desc": "Stay and investigate", "next": "ghost_scene"},
             {"desc": "Run outside", "next": "legend_path"}
@@ -59,7 +48,7 @@ scenes = {
 
     "journal_scene": {
         "text": "You find a dusty journal explaining how to break the curse.",
-        "effect": lambda state: state.update({"has_journal": True}),
+        "effect": lambda state: state["flags"].update({"has_journal": True}),
         "choices": [
             {"desc": "Perform the ritual", "next": "good_ending"},
             {"desc": "Ignore it", "next": "bad_ending"}
@@ -98,7 +87,7 @@ scenes = {
 
     "kid_scene": {
         "text": "The kid thanks you and gives you a strange charm.",
-        "effect": lambda state: state.update({"helped_kid": True}),
+        "effect": lambda state: state["flags"].update({"helped_kid": True}),
         "choices": [
             {"desc": "Follow the kid", "next": "ghost_scene"}
         ]
@@ -109,7 +98,7 @@ scenes = {
     # -------------------------
     "ghost_scene": {
         "text": "A ghostly figure appears. It whispers your name.",
-        "effect": lambda state: state.update({"saw_ghost": True}),
+        "effect": lambda state: state["flags"].update({"saw_ghost": True}),
         "choices": [
             {"desc": "Confront it", "next": "challenge_scene"},
             {"desc": "Run", "next": "escape_path"}
@@ -125,7 +114,7 @@ scenes = {
             {
                 "desc": "Yes (requires journal)",
                 "next": "good_ending",
-                "condition": lambda state: state["has_journal"]
+                "condition": lambda state: state["flags"].get("has_journal", False)
             },
             {
                 "desc": "No",
@@ -156,11 +145,13 @@ scenes = {
     }
 }
 
+
 # -------------------------
 # HELPER FUNCTION
 # -------------------------
 def get_available_choices(scene, state):
-    """Filter choices based on conditions"""
+    # Filter choices based on conditions
+    # Returns only choices the player is currently allowed to pick
     valid_choices = []
 
     for choice in scene.get("choices", []):
