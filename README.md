@@ -1,6 +1,6 @@
 # CyberScape: The Cursed Campground
 
-A text-based adventure game built in Python with a cybersecurity twist.
+A text-based adventure game built in Python with a cybersecurity twist!
 
 ## Team Members
 
