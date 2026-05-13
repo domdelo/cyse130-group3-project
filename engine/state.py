@@ -44,8 +44,9 @@ def new_state():
         "path":      "",
         "ending":    None,
     }
-
-
+create_new_state = new_state
+game_is_over = lambda state: state.get("curse_broken") or state.get("escaped") or state.get("cursed") or state.get("player_health", 5) <= 0
+print_state_summary = lambda state: print(state)
 # =====================
 # FLAG HELPERS
 # =====================
