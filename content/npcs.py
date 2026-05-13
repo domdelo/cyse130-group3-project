@@ -12,7 +12,7 @@ def kid_npc(state):
 
 def scientist_npc(state):
     print("[SCIENTIST] \nScientist: 'I've been studying this forest for years. My journal will tell you how to break the curse. '")
-    add_item(state, "has_journal")
+    add_item(state, "journal")
 
 def guard_npc(state):
     print("[GUARD] \nGuard: 'You need the lantern to pass.'")
